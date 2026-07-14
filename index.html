@@ -473,6 +473,8 @@ var smoothP = 0;
 function onVidReady() {
   if (reduced) return;
   videoReady = true;
+  // Seek to first frame so video is visible immediately (not a black box)
+  if (vid.currentTime === 0) vid.currentTime = 0.001;
 }
 
 // Guard against loadedmetadata firing before this script ran
@@ -480,7 +482,11 @@ if (vid.readyState >= 1) {
   onVidReady();
 } else {
   vid.addEventListener('loadedmetadata', onVidReady, {once:true});
+  vid.addEventListener('loadeddata', onVidReady, {once:true});
 }
+
+// Mobile browsers ignore preload="auto" — force load initiation
+vid.load();
 
 /* ── NAV SCROLL AWARENESS ─── */
 var nav = document.getElementById('siteNav');
