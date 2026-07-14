@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-page="about">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Tadka By Hanu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+
+:root{
+  --color-parchment:#d8cbb8;
+  --color-linen:#bfb4a3;
+  --color-warm-stone:#b6ab9c;
+  --color-walnut:#978e81;
+  --color-espresso:#615b53;
+  --color-onyx-warm:#2c2c2c;
+  --color-midnight-roast:#292622;
+  --color-saffron-glow:#d49653;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --fb:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{background:var(--color-parchment);color:var(--color-onyx-warm);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+.nav{position:fixed;inset:0 0 auto 0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;transition:background .4s cubic-bezier(.25,.46,.45,.94),border-color .4s}
+.nav-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;transition:color .4s}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.65;transition:opacity .4s,color .4s}
+.nav-links a:hover{opacity:1}
+.nav-links a.active{opacity:1}
+.nav-cta{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;border:1px solid rgba(216,203,184,.55);border-radius:3px;padding:10px 20px;transition:background .4s,color .4s,border-color .4s}
+.nav-cta:hover{background:var(--color-parchment);color:var(--color-onyx-warm);border-color:var(--color-parchment)}
+.nav.nav-light{background:rgba(216,203,184,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--color-warm-stone)}
+.nav.nav-light .nav-logo,.nav.nav-light .nav-links a,.nav.nav-light .nav-cta{color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta{border-color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.nav.nav-light .nav-links a.active{color:var(--color-saffron-glow);opacity:1}
+
+/* ── PAGE BANNER ── */
+.page-banner{background:var(--color-midnight-roast);padding:148px 60px 92px}
+.page-banner .eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-parchment);opacity:.45;margin-bottom:20px}
+.page-title{font-family:var(--fd);font-weight:300;font-size:clamp(72px,11vw,148px);line-height:.86;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.page-sub{font-family:var(--fb);font-size:15px;font-weight:400;letter-spacing:-0.015px;color:var(--color-parchment);opacity:.5;line-height:1.65;max-width:520px;margin-top:22px}
+
+/* ── SHARED ── */
+hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
+.eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);margin-bottom:16px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.rv.in{opacity:1;transform:none}
+.btn-light{display:inline-flex;align-items:center;background:transparent;color:var(--color-onyx-warm);border:1px solid var(--color-onyx-warm);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s cubic-bezier(.25,.46,.45,.94),color .4s;white-space:nowrap}
+.btn-light:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.btn-text{display:inline-flex;align-items:center;gap:6px;background:transparent;border:none;padding:0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;cursor:pointer;transition:color .4s;opacity:.8}
+.btn-text:hover{opacity:1;color:var(--color-onyx-warm)}
+
+/* ── STORY ── */
+.story{padding:92px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.story-panel{
+  width:100%;aspect-ratio:3/4;
+  background:var(--color-midnight-roast);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.story-panel-bg{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(120px,22vw,280px);
+  letter-spacing:-0.04em;color:var(--color-parchment);
+  opacity:.06;line-height:.85;text-align:center;user-select:none;
+}
+.story-panel-tag{
+  position:absolute;bottom:28px;left:24px;right:24px;
+  font-family:var(--fb);font-size:11px;font-weight:500;
+  letter-spacing:-0.011em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.35;text-align:center;
+  padding-top:14px;border-top:1px solid rgba(216,203,184,.15);
+}
+.story-right{padding-top:8px}
+.story-heading{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(40px,5.5vw,68px);
+  line-height:.9;letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:28px;
+}
+.story-body{
+  font-family:var(--fb);font-size:15px;font-weight:400;
+  letter-spacing:-0.015px;color:var(--color-espresso);
+  line-height:1.75;margin-bottom:20px;
+}
+
+/* ── VALUES ── */
+.values{padding:92px 60px}
+.values-head{margin-bottom:52px}
+.values-title{font-family:var(--fd);font-weight:300;font-size:clamp(40px,6vw,72px);line-height:.9;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-onyx-warm)}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--color-warm-stone)}
+.val{
+  padding:36px 28px;
+  border-right:1px solid var(--color-warm-stone);
+  transition:background .4s cubic-bezier(.25,.46,.45,.94);
+}
+.val:last-child{border-right:none}
+.val:hover{background:var(--color-linen)}
+.val-n{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-walnut);margin-bottom:24px;
+}
+.val-t{
+  font-family:var(--fd);font-weight:300;font-size:26px;
+  letter-spacing:-0.035em;text-transform:uppercase;
+  color:var(--color-onyx-warm);line-height:1;margin-bottom:14px;
+}
+.val-d{font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--color-espresso);line-height:1.7}
+
+/* ── QUOTE MARQUEE ── */
+.qmq{
+  overflow:hidden;padding:52px 0;
+  background:var(--color-midnight-roast);
+  border-top:1px solid rgba(216,203,184,.08);
+  border-bottom:1px solid rgba(216,203,184,.08);
+}
+.qmq-track{display:flex;width:max-content;animation:qscroll 40s linear infinite;align-items:center}
+.qmq:hover .qmq-track{animation-play-state:paused}
+.qw{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(32px,4.5vw,60px);
+  letter-spacing:-0.04em;text-transform:uppercase;line-height:1;
+  padding:0 32px;flex-shrink:0;color:var(--color-parchment);white-space:nowrap;
+}
+.qw.o{color:transparent;-webkit-text-stroke:1px rgba(216,203,184,.3)}
+.qsep{font-size:18px;color:var(--color-saffron-glow);opacity:.7;padding:0 4px;flex-shrink:0;font-family:var(--fb);font-weight:500}
+@keyframes qscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── REVIEWS ── */
+.revs{padding:92px 60px}
+.revs-head{margin-bottom:52px}
+.revs-title{font-family:var(--fd);font-weight:300;font-size:clamp(40px,6vw,72px);line-height:.9;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-onyx-warm)}
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--color-warm-stone)}
+.rev{
+  padding:52px 28px 32px;position:relative;
+  border-right:1px solid var(--color-warm-stone);
+  border-bottom:1px solid var(--color-warm-stone);
+}
+.rev:nth-child(2n){border-right:none}
+.rev:nth-last-child(-n+2){border-bottom:none}
+.rev-src{position:absolute;top:28px;right:28px;font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut)}
+.rev-stars{font-size:14px;color:var(--color-saffron-glow);margin-bottom:18px;letter-spacing:2px}
+.rev-q{font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--color-onyx-warm);line-height:1.75;margin-bottom:20px}
+.rev-a{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut)}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--color-midnight-roast);padding:92px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-band-title{font-family:var(--fd);font-weight:300;font-size:clamp(40px,6vw,80px);line-height:.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cta-dark{display:inline-flex;align-items:center;background:transparent;color:var(--color-parchment);border:1px solid var(--color-parchment);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s,color .4s;white-space:nowrap}
+.btn-cta-dark:hover{background:var(--color-parchment);color:var(--color-onyx-warm)}
+.btn-cta-text{display:inline-flex;align-items:center;background:transparent;border:none;padding:16px 0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.45;transition:opacity .4s;cursor:pointer}
+.btn-cta-text:hover{opacity:1}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--color-warm-stone)}
+.ft-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-espresso)}
+.ft-copy{font-family:var(--fb);font-size:12px;color:var(--color-walnut);letter-spacing:-0.012em}
+.ft-links{display:flex;gap:20px}
+.ft-link{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ft-link:hover{color:var(--color-onyx-warm)}
+
+@media(max-width:900px){
+  .nav{padding:16px 24px}.nav-links{gap:16px}
+  .page-banner{padding:100px 24px 60px}
+  .story{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+  .story-panel{aspect-ratio:4/3}
+  .values{padding:60px 24px}.val-grid{grid-template-columns:1fr}
+  .val{border-right:none;border-bottom:1px solid var(--color-warm-stone)}.val:last-child{border-bottom:none}
+  .revs,.cta-band{padding:60px 24px}.rev-grid{grid-template-columns:1fr}
+  .rev{border-right:none !important}.rev:last-child{border-bottom:none !important}
+  .cta-band{flex-direction:column;align-items:flex-start;gap:28px}
+  footer{padding:22px 24px}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.qmq-track{animation:none}}
+</style>
+<link rel="stylesheet" href="./polish.css">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <a class="nav-logo" href="./index.html">Tadka · Hanu</a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./catering.html">Catering</a></li>
+    <li><a href="./menu.html">Menu</a></li>
+    <li><a href="./about.html" class="active">About</a></li>
+  </ul>
+  <a class="nav-cta" href="./book.html">Book an Event</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu">
+  <a class="nav-overlay-link" href="./index.html">Home</a>
+  <a class="nav-overlay-link" href="./catering.html">Catering</a>
+  <a class="nav-overlay-link" href="./menu.html">Menu</a>
+  <a class="nav-overlay-link active" href="./about.html">About</a>
+  <a class="nav-overlay-link-cta" href="./book.html">Book an Event</a>
+</div>
+
+<div class="page-banner" id="pageBanner">
+  <p class="eyebrow">The Chef Behind the Flame</p>
+  <h1 class="page-title">Chef<br>Honey</h1>
+  <p class="page-sub">A self-taught cook with a lifelong passion for Indian cuisine, and the belief that great food changes the way people feel about each other.</p>
+</div>
+
+<hr class="rule">
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-panel rv">
+    <div class="story-panel-bg">H</div>
+    <div class="story-panel-tag">Chef Honey · Tadka By Hanu</div>
+  </div>
+  <div class="story-right rv" style="transition-delay:.12s">
+    <h2 class="story-heading">Where It<br>All Started</h2>
+    <p class="story-body">Growing up surrounded by the rich aromas of Indian cooking, Honey developed a deep connection to food as a form of love and expression. What began as cooking for family and friends slowly became a calling — each dish a story told through spice, fire, and tradition.</p>
+    <p class="story-body">After years of refining recipes and hosting intimate dinner gatherings, Tadka By Hanu was born. The name "Tadka" refers to the classic South Asian technique of blooming spices in hot oil — a moment of transformation that releases the deepest flavours. That's what Honey brings to every event.</p>
+    <p class="story-body">Today, Honey caters everything from intimate private dinners to large-scale weddings and corporate events, bringing the same passion and precision to every plate — whether it's for two people or four hundred.</p>
+    <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn-light" href="./book.html">Work With Honey</a>
+      <a class="btn-text" href="./menu.html">See the Menu →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-head rv">
+    <p class="eyebrow">How We Cook</p>
+    <h2 class="values-title">The Honey<br>Standard</h2>
+  </div>
+  <div class="val-grid">
+    <div class="val rv">
+      <div class="val-n">01</div>
+      <div class="val-t">Always Fresh</div>
+      <p class="val-d">Nothing is pre-made or reheated. Every dish begins with whole spices, fresh aromatics, and quality proteins sourced locally where possible.</p>
+    </div>
+    <div class="val rv" style="transition-delay:.08s">
+      <div class="val-n">02</div>
+      <div class="val-t">Real Technique</div>
+      <p class="val-d">Slow-cooking, tandoor firing, dum steaming — traditional methods that can't be shortcut. If it takes 12 hours, it takes 12 hours.</p>
+    </div>
+    <div class="val rv" style="transition-delay:.16s">
+      <div class="val-n">03</div>
+      <div class="val-t">Made for You</div>
+      <p class="val-d">Every catering order is personalized. Dietary needs, spice preferences, allergies, cultural requirements — all accommodated without compromise.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+
+<hr class="rule">
+
+<!-- REVIEWS -->
+<section class="revs">
+  <div class="revs-head rv">
+    <p class="eyebrow">In Their Words</p>
+    <h2 class="revs-title">What Guests<br>Say</h2>
+  </div>
+  <div class="rev-grid">
+    <div class="rev rv">
+      <span class="rev-src">Google</span>
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"The butter chicken… excellent and complex flavours. Honey cooks with the same passion as Gordon Ramsay, Jamie Oliver, Wolfgang Puck. Absolute 5 stars."</p>
+      <div class="rev-a">Sukhman Singh</div>
+    </div>
+    <div class="rev rv" style="transition-delay:.08s">
+      <span class="rev-src">Google</span>
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"I've traveled through Europe and India. His butter chicken has been the best I've ever had — rich yet light, so flavorful. A talent that deserves recognition."</p>
+      <div class="rev-a">Strikez_Akshat FN</div>
+    </div>
+    <div class="rev rv" style="transition-delay:.16s">
+      <span class="rev-src">Google</span>
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Harps butter chicken is the perfect blend of comfort and flavor. Heartwarming, indulgent, and satisfying every single time. Worth every bite."</p>
+      <div class="rev-a">Akshat &amp; Shivi</div>
+    </div>
+    <div class="rev rv" style="transition-delay:.24s">
+      <span class="rev-src">Google</span>
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Hired Honey for our wedding reception. 180 guests, all absolutely floored. Every dish was perfection and the live cooking station was a show in itself."</p>
+      <div class="rev-a">Priya &amp; Raj — Wedding Client</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<div class="cta-band">
+  <div class="cta-band-title rv">Let's Cook<br>Together</div>
+  <div class="cta-btns rv" style="transition-delay:.1s">
+    <a class="btn-cta-dark" href="./book.html">Book Your Event</a>
+    <a class="btn-cta-text" href="./catering.html">Our Catering →</a>
+  </div>
+</div>
+
+<hr class="rule">
+<footer>
+  <div class="ft-logo">Tadka By Hanu</div>
+  <div class="ft-copy">&copy; 2026 · Authentic Indian Catering</div>
+  <div class="ft-links">
+    <a class="ft-link" href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">Instagram</a>
+    <a class="ft-link" href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('siteNav');
+  var banner = document.getElementById('pageBanner');
+  function updateNav(){
+    if(window.scrollY >= banner.offsetHeight - 20){nav.classList.add('nav-light')}
+    else{nav.classList.remove('nav-light')}
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)} });
+  },{threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script src="./mobile.js"></script>
+</body>
+</html>

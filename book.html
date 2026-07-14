@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" data-page="book">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book — Tadka By Hanu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+
+:root{
+  --color-parchment:#d8cbb8;
+  --color-linen:#bfb4a3;
+  --color-warm-stone:#b6ab9c;
+  --color-walnut:#978e81;
+  --color-espresso:#615b53;
+  --color-onyx-warm:#2c2c2c;
+  --color-midnight-roast:#292622;
+  --color-saffron-glow:#d49653;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --fb:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{background:var(--color-parchment);color:var(--color-onyx-warm);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+.nav{position:fixed;inset:0 0 auto 0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;transition:background .4s cubic-bezier(.25,.46,.45,.94),border-color .4s}
+.nav-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;transition:color .4s}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.65;transition:opacity .4s,color .4s}
+.nav-links a:hover{opacity:1}
+.nav-links a.active{opacity:1}
+.nav-cta{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;border:1px solid rgba(216,203,184,.55);border-radius:3px;padding:10px 20px;transition:background .4s,color .4s,border-color .4s}
+.nav-cta:hover{background:var(--color-parchment);color:var(--color-onyx-warm);border-color:var(--color-parchment)}
+.nav.nav-light{background:rgba(216,203,184,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--color-warm-stone)}
+.nav.nav-light .nav-logo,.nav.nav-light .nav-links a,.nav.nav-light .nav-cta{color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta{border-color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.nav.nav-light .nav-links a.active{color:var(--color-saffron-glow);opacity:1}
+
+/* ── PAGE BANNER ── */
+.page-banner{background:var(--color-midnight-roast);padding:148px 60px 92px}
+.page-banner .eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-parchment);opacity:.45;margin-bottom:20px}
+.page-title{font-family:var(--fd);font-weight:300;font-size:clamp(72px,11vw,148px);line-height:.86;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.page-sub{font-family:var(--fb);font-size:15px;font-weight:400;letter-spacing:-0.015px;color:var(--color-parchment);opacity:.5;line-height:1.65;max-width:520px;margin-top:22px}
+
+/* ── SHARED ── */
+hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
+.eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);margin-bottom:16px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.rv.in{opacity:1;transform:none}
+
+/* ── FORM LAYOUT ── */
+.form-wrap{padding:92px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+
+.form-left{}
+.form-left-heading{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(40px,5vw,64px);
+  line-height:.9;letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:24px;
+}
+.form-left-body{
+  font-family:var(--fb);font-size:14px;font-weight:400;
+  letter-spacing:-0.01em;color:var(--color-espresso);
+  line-height:1.75;margin-bottom:40px;
+}
+.contact-list{display:flex;flex-direction:column;gap:0}
+.ci{
+  display:flex;align-items:center;gap:20px;
+  padding:16px 0;border-bottom:1px solid var(--color-warm-stone);
+}
+.ci:first-child{border-top:1px solid var(--color-warm-stone)}
+.ci-label{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-walnut);min-width:64px;flex-shrink:0;
+}
+.ci-val{font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--color-espresso)}
+.ci-val a{color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ci-val a:hover{color:var(--color-onyx-warm)}
+
+/* ── FORM ── */
+.book-form{
+  background:var(--color-linen);
+  padding:48px 40px;
+}
+.form-title{
+  font-family:var(--fd);font-weight:300;font-size:32px;
+  letter-spacing:-0.035em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:36px;line-height:1;
+}
+.field{margin-bottom:20px}
+.field label{
+  display:block;font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-walnut);margin-bottom:8px;
+}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--color-parchment);
+  border:1px solid var(--color-warm-stone);border-radius:3px;
+  padding:13px 16px;
+  font-family:var(--fb);font-size:14px;font-weight:400;
+  letter-spacing:-0.01em;color:var(--color-onyx-warm);
+  outline:none;transition:border-color .4s;
+  appearance:none;-webkit-appearance:none;
+}
+.field textarea{border-radius:3px;resize:vertical;min-height:100px}
+.field select{
+  cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23978e81' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+  background-color:var(--color-parchment);
+}
+.field select option{background:var(--color-parchment);color:var(--color-onyx-warm)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--color-onyx-warm)}
+.field input::placeholder,.field textarea::placeholder{color:var(--color-walnut)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{margin-top:28px}
+.btn-submit{
+  width:100%;background:var(--color-onyx-warm);color:var(--color-parchment);
+  border:1px solid var(--color-onyx-warm);border-radius:3px;padding:18px;
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;cursor:pointer;
+  transition:background .4s,color .4s;
+}
+.btn-submit:hover{background:var(--color-midnight-roast);border-color:var(--color-midnight-roast)}
+.form-note{
+  font-family:var(--fb);font-size:12px;font-weight:400;
+  letter-spacing:-0.012em;color:var(--color-walnut);
+  text-align:center;margin-top:14px;line-height:1.5;
+}
+.success-msg{display:none;text-align:center;padding:40px 0}
+.success-msg.show{display:block}
+.success-title{
+  font-family:var(--fd);font-weight:300;font-size:48px;
+  letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:14px;line-height:.9;
+}
+.success-body{font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--color-espresso);line-height:1.7}
+
+/* ── INFO STRIP ── */
+.info-strip{
+  padding:0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--color-warm-stone);
+  border-bottom:1px solid var(--color-warm-stone);
+}
+.is{
+  padding:40px 36px;
+  border-right:1px solid var(--color-warm-stone);
+  transition:background .4s cubic-bezier(.25,.46,.45,.94);
+}
+.is:last-child{border-right:none}
+.is:hover{background:var(--color-linen)}
+.is-t{
+  font-family:var(--fd);font-weight:300;font-size:26px;
+  letter-spacing:-0.035em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:10px;line-height:1;
+}
+.is-d{font-family:var(--fb);font-size:13px;font-weight:400;letter-spacing:-0.011em;color:var(--color-espresso);line-height:1.55}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--color-warm-stone)}
+.ft-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-espresso)}
+.ft-copy{font-family:var(--fb);font-size:12px;color:var(--color-walnut);letter-spacing:-0.012em}
+.ft-links{display:flex;gap:20px}
+.ft-link{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ft-link:hover{color:var(--color-onyx-warm)}
+
+@media(max-width:900px){
+  .nav{padding:16px 24px}.nav-links{gap:16px}
+  .page-banner{padding:100px 24px 60px}
+  .form-wrap{grid-template-columns:1fr;padding:60px 24px;gap:52px}
+  .book-form{padding:32px 24px}.field-row{grid-template-columns:1fr}
+  .info-strip{grid-template-columns:1fr 1fr}
+  .is{border-bottom:1px solid var(--color-warm-stone)}
+  .is:nth-child(2n){border-right:none}
+  .is:nth-last-child(-n+2){border-bottom:none}
+  footer{padding:22px 24px}
+}
+@media(max-width:480px){
+  .info-strip{grid-template-columns:1fr}
+  .is{border-right:none !important}
+  .is:not(:last-child){border-bottom:1px solid var(--color-warm-stone) !important}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+<link rel="stylesheet" href="./polish.css">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <a class="nav-logo" href="./index.html">Tadka · Hanu</a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./catering.html">Catering</a></li>
+    <li><a href="./menu.html">Menu</a></li>
+    <li><a href="./about.html">About</a></li>
+  </ul>
+  <a class="nav-cta active" href="./book.html">Book an Event</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu">
+  <a class="nav-overlay-link" href="./index.html">Home</a>
+  <a class="nav-overlay-link" href="./catering.html">Catering</a>
+  <a class="nav-overlay-link" href="./menu.html">Menu</a>
+  <a class="nav-overlay-link" href="./about.html">About</a>
+  <a class="nav-overlay-link-cta active" href="./book.html">Book an Event</a>
+</div>
+
+<div class="page-banner" id="pageBanner">
+  <p class="eyebrow">Let's Make It Happen</p>
+  <h1 class="page-title">Book<br>Honey</h1>
+  <p class="page-sub">Whether it's a backyard dinner or a 400-guest wedding, reach out and let's create something unforgettable together.</p>
+</div>
+
+<hr class="rule">
+
+<!-- FORM + CONTACT -->
+<div class="form-wrap">
+  <div class="form-left rv">
+    <h2 class="form-left-heading">Get In<br>Touch</h2>
+    <p class="form-left-body">Fill out the form and Honey will be in touch within 24 hours. For urgent bookings or same-week events, reach out directly via Instagram or email.</p>
+    <div class="contact-list">
+      <div class="ci">
+        <span class="ci-label">Email</span>
+        <span class="ci-val"><a href="mailto:tadkabyhanu@gmail.com">tadkabyhanu@gmail.com</a></span>
+      </div>
+      <div class="ci">
+        <span class="ci-label">Instagram</span>
+        <span class="ci-val"><a href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">@chefhoneystadka</a></span>
+      </div>
+      <div class="ci">
+        <span class="ci-label">TikTok</span>
+        <span class="ci-val"><a href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">@tadkabyhoney</a></span>
+      </div>
+      <div class="ci">
+        <span class="ci-label">YouTube</span>
+        <span class="ci-val"><a href="https://youtube.com/@honeytadka" target="_blank" rel="noopener">@honeytadka</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-right rv" style="transition-delay:.12s">
+    <div class="book-form">
+      <div class="form-title">Your Event</div>
+
+      <form id="bookForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" placeholder="Priya" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" placeholder="Sharma" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="priya@example.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 (403) 000-0000" autocomplete="tel">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="type">Catering Type *</label>
+            <select id="type" name="type" required>
+              <option value="" disabled selected>Select type</option>
+              <option value="basic">Basic — Delivery Order</option>
+              <option value="custom">Custom — Tailored Order</option>
+              <option value="private">Private Chef Experience</option>
+              <option value="event">Live Event Catering</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guests">Guest Count</label>
+            <select id="guests" name="guests">
+              <option value="" disabled selected>Approx. guests</option>
+              <option>1–5</option>
+              <option>6–15</option>
+              <option>16–30</option>
+              <option>31–60</option>
+              <option>61–100</option>
+              <option>101–200</option>
+              <option>201–400</option>
+              <option>400+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="date">Event Date</label>
+          <input type="date" id="date" name="date" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="location">Event Location</label>
+          <input type="text" id="location" name="location" placeholder="Your address or venue details" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="dietary">Dietary Requirements (optional)</label>
+          <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, vegan, halal, nut allergy…">
+        </div>
+        <div class="field">
+          <label for="notes">Tell Us More</label>
+          <textarea id="notes" name="notes" placeholder="Any details about your event, favourite dishes, or special requests…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Send Enquiry</button>
+          <p class="form-note">We respond within 24 hours. No spam, ever.</p>
+        </div>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <p class="success-title">Enquiry<br>Received</p>
+        <p class="success-body">Thank you for reaching out. Honey will be in touch within 24 hours to discuss your event and put together a custom proposal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="is rv"><div class="is-t">24h</div><div class="is-d">Response time for all enquiries</div></div>
+  <div class="is rv" style="transition-delay:.06s"><div class="is-t">Free</div><div class="is-d">Consultation and quote included</div></div>
+  <div class="is rv" style="transition-delay:.12s"><div class="is-t">Flexible</div><div class="is-d">Customizable menus for every event</div></div>
+  <div class="is rv" style="transition-delay:.18s"><div class="is-t">400+</div><div class="is-d">Max guest capacity for events</div></div>
+</div>
+
+<hr class="rule">
+<footer>
+  <div class="ft-logo">Tadka By Hanu</div>
+  <div class="ft-copy">&copy; 2026 · Authentic Indian Catering</div>
+  <div class="ft-links">
+    <a class="ft-link" href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">Instagram</a>
+    <a class="ft-link" href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('siteNav');
+  var banner = document.getElementById('pageBanner');
+  function updateNav(){
+    if(window.scrollY >= banner.offsetHeight - 20){nav.classList.add('nav-light')}
+    else{nav.classList.remove('nav-light')}
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)} });
+  },{threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var fname = document.getElementById('fname').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var type = document.getElementById('type').value;
+    if(!fname || !email || !type){
+      alert('Please fill in your name, email, and catering type.');
+      return;
+    }
+    this.style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  });
+})();
+</script>
+<script src="./mobile.js"></script>
+</body>
+</html>

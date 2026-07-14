@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-page="home">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tadka By Hanu — Authentic Indian Catering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+
+:root{
+  --color-parchment:#d8cbb8;
+  --color-linen:#bfb4a3;
+  --color-warm-stone:#b6ab9c;
+  --color-walnut:#978e81;
+  --color-espresso:#615b53;
+  --color-onyx-warm:#2c2c2c;
+  --color-midnight-roast:#292622;
+  --color-saffron-glow:#d49653;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --fb:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--color-parchment);
+  color:var(--color-onyx-warm);
+  font-family:var(--fb);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── NAV ──────────────────────────────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 52px;
+  transition:background .4s cubic-bezier(.25,.46,.45,.94),border-color .4s;
+}
+.nav-logo{
+  font-family:var(--fb);font-size:13px;font-weight:500;
+  letter-spacing:-0.011em;text-transform:uppercase;
+  color:var(--color-parchment);text-decoration:none;
+  transition:color .4s;
+}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;
+  color:var(--color-parchment);text-decoration:none;
+  opacity:.65;transition:opacity .4s,color .4s;
+}
+.nav-links a:hover{opacity:1}
+.nav-links a.active{opacity:1}
+.nav-cta{
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;
+  color:var(--color-parchment);text-decoration:none;
+  border:1px solid rgba(216,203,184,.55);border-radius:3px;
+  padding:10px 20px;transition:background .4s,color .4s,border-color .4s;
+}
+.nav-cta:hover{background:var(--color-parchment);color:var(--color-onyx-warm);border-color:var(--color-parchment)}
+
+/* Scrolled nav */
+.nav.nav-light{
+  background:rgba(216,203,184,.96);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--color-warm-stone);
+}
+.nav.nav-light .nav-logo,
+.nav.nav-light .nav-links a,
+.nav.nav-light .nav-cta{color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta{border-color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.nav.nav-light .nav-links a.active{color:var(--color-saffron-glow);opacity:1}
+
+/* ── HERO ─────────────────────────────── */
+.hero-driver{height:300vh;position:relative;background:var(--color-midnight-roast)}
+.hero-sticky{position:sticky;top:0;height:100vh;width:100%}
+.hero-inner{
+  position:relative;width:100%;height:100%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.hero-video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-video{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-video-overlay{position:absolute;inset:0;background:rgba(41,38,34,.55)}
+
+.hero-center{
+  position:relative;z-index:5;
+  text-align:center;width:80%;max-width:860px;
+}
+.hero-tagline{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(56px,10vw,148px);
+  letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-parchment);line-height:0.86;margin-bottom:20px;
+}
+.hero-sub{
+  font-family:var(--fb);font-size:13px;font-weight:500;
+  letter-spacing:-0.011em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.45;margin-bottom:36px;
+}
+.hero-ctas-block{display:flex;gap:12px;justify-content:center}
+
+.hero-eyebrow{
+  position:absolute;top:90px;left:52px;z-index:10;
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.4;
+}
+.scroll-hint{
+  position:absolute;bottom:32px;right:52px;z-index:10;
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.3;
+}
+.scroll-line{width:40px;height:1px;background:var(--color-parchment);opacity:.45}
+
+/* ── BUTTONS ──────────────────────────── */
+.btn-dark{
+  display:inline-flex;align-items:center;
+  background:transparent;color:var(--color-parchment);
+  border:1px solid var(--color-parchment);border-radius:3px;
+  padding:16px 28px;
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  transition:background .4s cubic-bezier(.25,.46,.45,.94),color .4s;
+  white-space:nowrap;
+}
+.btn-dark:hover{background:var(--color-parchment);color:var(--color-onyx-warm)}
+
+.btn-light{
+  display:inline-flex;align-items:center;
+  background:transparent;color:var(--color-onyx-warm);
+  border:1px solid var(--color-onyx-warm);border-radius:3px;
+  padding:16px 28px;
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  transition:background .4s cubic-bezier(.25,.46,.45,.94),color .4s;
+  white-space:nowrap;
+}
+.btn-light:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+
+.btn-text{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:none;padding:0;
+  font-family:var(--fb);font-size:14px;font-weight:500;
+  letter-spacing:-0.01em;text-transform:uppercase;
+  color:var(--color-espresso);text-decoration:none;cursor:pointer;
+  transition:color .4s;opacity:.8;
+}
+.btn-text:hover{opacity:1;color:var(--color-onyx-warm)}
+
+/* ── SHARED ───────────────────────────── */
+hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
+.eyebrow{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-walnut);margin-bottom:16px;
+}
+.sec-title{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(50px,6vw,90px);line-height:.9;
+  letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-onyx-warm);
+}
+.rv{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94);
+}
+.rv.in{opacity:1;transform:none}
+.tag{
+  display:inline-block;font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;border-radius:3px;
+  padding:4px 10px;border:1px solid var(--color-warm-stone);color:var(--color-espresso);
+}
+.tag-accent{background:var(--color-saffron-glow);border-color:var(--color-saffron-glow);color:var(--color-onyx-warm)}
+
+/* ── STATS BAND ───────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{
+  padding:40px 52px;
+  border-right:1px solid var(--color-warm-stone);
+}
+.stat:last-child{border-right:none}
+.stat-n{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(44px,5.5vw,72px);
+  letter-spacing:-0.04em;color:var(--color-onyx-warm);line-height:.88;margin-bottom:10px;
+}
+.stat-l{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);
+}
+
+/* ── SERVICES GRID ────────────────────── */
+.home-svcs{padding:92px 60px}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:32px;flex-wrap:wrap}
+.grid2x2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-warm-stone)}
+.sc{
+  background:var(--color-linen);padding:40px 36px;
+  cursor:pointer;text-decoration:none;display:block;color:inherit;
+  transition:background .4s cubic-bezier(.25,.46,.45,.94);
+}
+.sc:hover{background:var(--color-parchment)}
+.sc-n{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;
+  color:var(--color-walnut);margin-bottom:24px;
+}
+.sc-t{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(28px,3.5vw,44px);letter-spacing:-0.035em;text-transform:uppercase;
+  color:var(--color-onyx-warm);line-height:.88;margin-bottom:14px;
+}
+.sc-d{
+  font-family:var(--fb);font-size:15px;font-weight:400;
+  letter-spacing:-0.015px;color:var(--color-espresso);line-height:1.65;margin-bottom:22px;
+}
+
+/* ── MARQUEE ──────────────────────────── */
+.mq-outer{
+  overflow:hidden;padding:52px 0;
+  border-top:1px solid var(--color-warm-stone);
+  border-bottom:1px solid var(--color-warm-stone);
+}
+.mq-track{display:flex;width:max-content;animation:ticker 27s linear infinite;align-items:baseline}
+.mq-outer:hover .mq-track{animation-play-state:paused}
+.mw{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(44px,6.5vw,82px);
+  letter-spacing:-0.04em;text-transform:uppercase;line-height:1;
+  padding:0 36px;flex-shrink:0;white-space:nowrap;
+}
+.mw.s{color:var(--color-onyx-warm)}
+.mw.o{color:transparent;-webkit-text-stroke:1px var(--color-warm-stone)}
+.mdot{color:var(--color-saffron-glow);font-size:20px;padding:0 4px;align-self:center;font-family:var(--fb);font-weight:500}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── TESTIMONIALS ─────────────────────── */
+.home-ts{padding:92px 60px}
+.t3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--color-warm-stone);margin-top:52px}
+.tc{
+  padding:52px 28px 32px;position:relative;
+  border-right:1px solid var(--color-warm-stone);
+}
+.tc:last-child{border-right:none}
+.tc-src{
+  position:absolute;top:28px;right:28px;
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);
+}
+.t-stars{font-size:14px;color:var(--color-saffron-glow);margin-bottom:18px;letter-spacing:2px}
+.t-q{
+  font-family:var(--fb);font-size:14px;font-weight:400;
+  letter-spacing:-0.01em;
+  color:var(--color-onyx-warm);line-height:1.75;margin-bottom:20px;
+}
+.t-a{
+  font-family:var(--fb);font-size:12px;font-weight:500;
+  letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);
+}
+
+/* ── FOOTER ───────────────────────────── */
+footer{
+  padding:28px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+  border-top:1px solid var(--color-warm-stone);
+}
+.ft-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-espresso)}
+.ft-copy{font-family:var(--fb);font-size:12px;color:var(--color-walnut);letter-spacing:-0.012em}
+.ft-links{display:flex;gap:20px}
+.ft-link{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ft-link:hover{color:var(--color-onyx-warm)}
+
+/* ── RESPONSIVE ───────────────────────── */
+@media(max-width:900px){
+  .nav{padding:16px 24px}
+  .nav-links{gap:16px}
+  .hero-eyebrow{left:24px;top:76px}.scroll-hint{right:24px}
+  .hero-center{width:92%}
+  .stats{grid-template-columns:1fr 1fr}.stat{border-right:none;border-bottom:1px solid var(--color-warm-stone);padding:24px}
+  .stat:nth-child(odd){border-right:1px solid var(--color-warm-stone)}
+  .home-svcs,.home-ts{padding:60px 24px}.grid2x2{grid-template-columns:1fr}.t3{grid-template-columns:1fr}
+  .tc{border-right:none;border-bottom:1px solid var(--color-warm-stone)}.tc:last-child{border-bottom:none}
+  footer{padding:22px 24px}.home-svcs .sec-header{flex-direction:column;align-items:flex-start;gap:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .mq-track{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+<link rel="stylesheet" href="./polish.css">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="siteNav">
+  <a class="nav-logo" href="./index.html">Tadka · Hanu</a>
+  <ul class="nav-links">
+    <li><a href="./index.html" class="active">Home</a></li>
+    <li><a href="./catering.html">Catering</a></li>
+    <li><a href="./menu.html">Menu</a></li>
+    <li><a href="./about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="./book.html">Book an Event</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu">
+  <a class="nav-overlay-link active" href="./index.html">Home</a>
+  <a class="nav-overlay-link" href="./catering.html">Catering</a>
+  <a class="nav-overlay-link" href="./menu.html">Menu</a>
+  <a class="nav-overlay-link" href="./about.html">About</a>
+  <a class="nav-overlay-link-cta" href="./book.html">Book an Event</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-driver" id="heroDriver">
+<div class="hero-sticky">
+<section class="hero-inner" id="hero">
+  <div class="hero-video-wrap" aria-hidden="true">
+    <video class="hero-video" id="heroVid"
+      muted playsinline preload="auto"
+      src="./hero.mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="hero-center">
+    <p class="hero-tagline">Tadka<br>By Hanu</p>
+    <p class="hero-sub">Handcrafted · Live-cooked · Unforgettable</p>
+    <div class="hero-ctas-block">
+      <a class="btn-dark" href="./book.html">Book Your Event</a>
+      <a class="btn-text" style="color:rgba(216,203,184,.7)" href="./catering.html">Our Catering →</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="scroll-line"></span>SCROLL
+  </div>
+</section>
+</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat rv"><div class="stat-n">50</div><div class="stat-l">Max Guests</div></div>
+  <div class="stat rv" style="transition-delay:.08s"><div class="stat-n">Multiple</div><div class="stat-l">Catering Styles</div></div>
+  <div class="stat rv" style="transition-delay:.16s"><div class="stat-n">5★</div><div class="stat-l">Every Review</div></div>
+  <div class="stat rv" style="transition-delay:.24s"><div class="stat-n">Live</div><div class="stat-l">On-site Cooking</div></div>
+</div>
+
+<hr class="rule">
+
+<!-- SERVICES -->
+<section class="home-svcs">
+  <div class="sec-header">
+    <div>
+      <p class="eyebrow">What We Offer</p>
+      <h2 class="sec-title">Four Ways<br>To Eat Well</h2>
+    </div>
+    <a class="btn-text" href="./catering.html">All Catering →</a>
+  </div>
+  <div class="grid2x2">
+    <a class="sc rv" href="./catering.html">
+      <div class="sc-n">01 — Basic</div>
+      <div class="sc-t">Menu<br>Orders</div>
+      <p class="sc-d">Fresh from our kitchen, delivered to your door. Quality non-negotiable, delivery included.</p>
+      <span class="tag">Delivery</span>
+    </a>
+    <a class="sc rv" style="transition-delay:.08s" href="./catering.html">
+      <div class="sc-n">02 — Custom</div>
+      <div class="sc-t">Fully<br>Tailored</div>
+      <p class="sc-d">Kitchen-prepared with your specifications — ingredient swaps, dietary needs, tailored portions.</p>
+      <span class="tag tag-accent">Customizable</span>
+    </a>
+    <a class="sc rv" style="transition-delay:.16s" href="./catering.html">
+      <div class="sc-n">03 — Private</div>
+      <div class="sc-t">Chef at<br>Your Door</div>
+      <p class="sc-d">Chef Honey at your location. Custom menu, live-cooked. An intimate experience to remember.</p>
+      <span class="tag">Live Fire</span>
+    </a>
+    <a class="sc rv" style="transition-delay:.24s" href="./catering.html">
+      <div class="sc-n">04 — Live Event</div>
+      <div class="sc-t">20–400<br>Guests</div>
+      <p class="sc-d">Weddings, corporate, backyard BBQs, receptions. Full-scale catering for any occasion.</p>
+      <span class="tag">Full Service</span>
+    </a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-outer" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mw s">Butter Chicken</span><span class="mdot">·</span>
+    <span class="mw o">Live Catering</span><span class="mdot">·</span>
+    <span class="mw s">Weddings</span><span class="mdot">·</span>
+    <span class="mw o">Where Flavour Meets Passion</span><span class="mdot">·</span>
+    <span class="mw s">Private Dinners</span><span class="mdot">·</span>
+    <span class="mw o">Handcrafted</span><span class="mdot">·</span>
+    <span class="mw s">Butter Chicken</span><span class="mdot">·</span>
+    <span class="mw o">Live Catering</span><span class="mdot">·</span>
+    <span class="mw s">Weddings</span><span class="mdot">·</span>
+    <span class="mw o">Where Flavour Meets Passion</span><span class="mdot">·</span>
+    <span class="mw s">Private Dinners</span><span class="mdot">·</span>
+    <span class="mw o">Handcrafted</span><span class="mdot">·</span>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="home-ts">
+  <div class="sec-header">
+    <div>
+      <p class="eyebrow">What People Say</p>
+      <h2 class="sec-title">All Five Stars.<br>Every Time.</h2>
+    </div>
+    <a class="btn-text" href="./about.html">Our Story →</a>
+  </div>
+  <div class="t3">
+    <div class="tc rv">
+      <span class="tc-src">Google</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-q">"The butter chicken… excellent and complex flavours. Honey cooks with the same passion as Gordon Ramsay, Jamie Oliver, Wolfgang Puck."</p>
+      <div class="t-a">Sukhman Singh</div>
+    </div>
+    <div class="tc rv" style="transition-delay:.08s">
+      <span class="tc-src">Google</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-q">"I've traveled through Europe and India. His butter chicken has been the best I've ever had — rich yet light, so flavorful."</p>
+      <div class="t-a">Strikez_Akshat FN</div>
+    </div>
+    <div class="tc rv" style="transition-delay:.16s">
+      <span class="tc-src">Google</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-q">"Harps butter chicken is the perfect blend of comfort and flavor. Heartwarming, indulgent, and satisfying every single time."</p>
+      <div class="t-a">Akshat &amp; Shivi</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+<footer>
+  <div class="ft-logo">Tadka By Hanu</div>
+  <div class="ft-copy">&copy; 2026 · Authentic Indian Catering</div>
+  <div class="ft-links">
+    <a class="ft-link" href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">Instagram</a>
+    <a class="ft-link" href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">TikTok</a>
+    <a class="ft-link" href="https://youtube.com/@honeytadka" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+/* ── VIDEO ─── */
+var vid = document.getElementById('heroVid');
+var videoReady = false;
+var smoothP = 0;
+
+function onVidReady() {
+  if (reduced || isMobile) {
+    vid.loop = true;
+    vid.play().catch(function(){});
+    return;
+  }
+  videoReady = true;
+}
+
+// Guard against loadedmetadata firing before this script ran
+if (vid.readyState >= 1) {
+  onVidReady();
+} else {
+  vid.addEventListener('loadedmetadata', onVidReady, {once:true});
+}
+
+/* ── NAV SCROLL AWARENESS ─── */
+var nav = document.getElementById('siteNav');
+var driver = document.getElementById('heroDriver');
+function updateNav() {
+  var threshold = isMobile
+    ? Math.round(window.innerHeight * 0.85)
+    : driver.offsetHeight - window.innerHeight - 20;
+  if (window.scrollY >= threshold) {
+    nav.classList.add('nav-light');
+  } else {
+    nav.classList.remove('nav-light');
+  }
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* ── SCROLL HERO ANIMATION ─── */
+if (!reduced) {
+  var hintEl = document.querySelector('.scroll-hint');
+  var eyeEl  = document.querySelector('.hero-eyebrow'); // may be null if removed
+
+  function clamp(v,lo,hi){return v<lo?lo:v>hi?hi:v}
+
+  function heroLoop() {
+    var driverScroll = driver.offsetHeight - window.innerHeight;
+    var p = driverScroll > 0 ? clamp(window.scrollY / driverScroll, 0, 1) : 0;
+
+    var fo = clamp(1 - p * 4, 0, 1);
+    hintEl.style.opacity = fo;
+    if (eyeEl) eyeEl.style.opacity = (fo * 0.4).toFixed(2);
+
+    if (!isMobile && videoReady && vid.duration && !vid.seeking) {
+      smoothP += (p - smoothP) * 0.15;
+      var t = smoothP * vid.duration;
+      if (Math.abs(vid.currentTime - t) > 0.008) vid.currentTime = t;
+    }
+
+    requestAnimationFrame(heroLoop);
+  }
+  requestAnimationFrame(heroLoop);
+}
+
+/* ── SCROLL REVEAL ─── */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+})();
+</script>
+<script src="./mobile.js"></script>
+</body>
+</html>

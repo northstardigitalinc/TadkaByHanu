@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-page="menu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Tadka By Hanu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+
+:root{
+  --color-parchment:#d8cbb8;
+  --color-linen:#bfb4a3;
+  --color-warm-stone:#b6ab9c;
+  --color-walnut:#978e81;
+  --color-espresso:#615b53;
+  --color-onyx-warm:#2c2c2c;
+  --color-midnight-roast:#292622;
+  --color-saffron-glow:#d49653;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --fb:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{background:var(--color-parchment);color:var(--color-onyx-warm);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+.nav{position:fixed;inset:0 0 auto 0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;transition:background .4s cubic-bezier(.25,.46,.45,.94),border-color .4s}
+.nav-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;transition:color .4s}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.65;transition:opacity .4s,color .4s}
+.nav-links a:hover{opacity:1}
+.nav-links a.active{opacity:1}
+.nav-cta{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;border:1px solid rgba(216,203,184,.55);border-radius:3px;padding:10px 20px;transition:background .4s,color .4s,border-color .4s}
+.nav-cta:hover{background:var(--color-parchment);color:var(--color-onyx-warm);border-color:var(--color-parchment)}
+.nav.nav-light{background:rgba(216,203,184,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--color-warm-stone)}
+.nav.nav-light .nav-logo,.nav.nav-light .nav-links a,.nav.nav-light .nav-cta{color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta{border-color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.nav.nav-light .nav-links a.active{color:var(--color-saffron-glow);opacity:1}
+
+/* ── PAGE BANNER ── */
+.page-banner{background:var(--color-midnight-roast);padding:148px 60px 92px}
+.page-banner .eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-parchment);opacity:.45;margin-bottom:20px}
+.page-title{font-family:var(--fd);font-weight:300;font-size:clamp(72px,11vw,148px);line-height:.86;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.page-sub{font-family:var(--fb);font-size:15px;font-weight:400;letter-spacing:-0.015px;color:var(--color-parchment);opacity:.5;line-height:1.65;max-width:520px;margin-top:22px}
+
+/* ── SHARED ── */
+hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
+.eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);margin-bottom:16px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.rv.in{opacity:1;transform:none}
+.tag{display:inline-block;font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;border-radius:3px;padding:4px 10px;border:1px solid var(--color-warm-stone);color:var(--color-espresso)}
+.tag-accent{background:var(--color-saffron-glow);border-color:var(--color-saffron-glow);color:var(--color-onyx-warm)}
+.btn-light{display:inline-flex;align-items:center;background:transparent;color:var(--color-onyx-warm);border:1px solid var(--color-onyx-warm);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s cubic-bezier(.25,.46,.45,.94),color .4s;white-space:nowrap}
+.btn-light:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.btn-text{display:inline-flex;align-items:center;gap:6px;background:transparent;border:none;padding:0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;cursor:pointer;transition:color .4s;opacity:.8}
+.btn-text:hover{opacity:1;color:var(--color-onyx-warm)}
+
+/* ── SIGNATURE DISH ── */
+.signature{padding:92px 60px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.sig-panel{
+  width:100%;aspect-ratio:1;
+  background:var(--color-midnight-roast);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.sig-panel-text{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(80px,16vw,180px);
+  letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.1;line-height:.85;
+  text-align:center;user-select:none;
+}
+.sig-ring{position:absolute;border:1px solid rgba(216,203,184,.12)}
+.sig-ring-1{inset:10%}
+.sig-ring-2{inset:20%}
+.sig-label{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  font-family:var(--fb);font-size:11px;font-weight:500;
+  letter-spacing:-0.011em;text-transform:uppercase;
+  color:var(--color-parchment);opacity:.35;white-space:nowrap;
+}
+.sig-title{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(48px,7vw,90px);
+  line-height:.88;letter-spacing:-0.04em;text-transform:uppercase;
+  color:var(--color-onyx-warm);margin-bottom:20px;
+}
+.sig-desc{
+  font-family:var(--fb);font-size:15px;font-weight:400;
+  letter-spacing:-0.015px;color:var(--color-espresso);
+  line-height:1.75;margin-bottom:28px;
+}
+.sig-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.sig-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--color-warm-stone);margin-bottom:32px;
+}
+.sm-cell{padding:14px 18px;border-right:1px solid var(--color-warm-stone);border-bottom:1px solid var(--color-warm-stone)}
+.sm-cell:nth-child(2n){border-right:none}
+.sm-cell:nth-child(n+3){border-bottom:none}
+.sm-l{font-family:var(--fb);font-size:11px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-walnut);margin-bottom:4px}
+.sm-v{font-family:var(--fd);font-weight:300;font-size:22px;letter-spacing:-0.035em;text-transform:uppercase;color:var(--color-onyx-warm);line-height:1}
+
+/* ── MENU SECTIONS ── */
+.menu-sec{padding:80px 60px}
+.menu-sec-head{margin-bottom:44px}
+.menu-sec-title{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(50px,6vw,80px);
+  line-height:.9;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-onyx-warm);
+}
+.dish-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--color-warm-stone);
+}
+.dish{
+  padding:28px 24px;
+  border-right:1px solid var(--color-warm-stone);
+  border-bottom:1px solid var(--color-warm-stone);
+  transition:background .4s cubic-bezier(.25,.46,.45,.94);
+}
+.dish:hover{background:var(--color-linen)}
+.dish:nth-child(3n){border-right:none}
+.dish:nth-last-child(-n+3){border-bottom:none}
+.dish-name{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(20px,2.5vw,30px);
+  letter-spacing:-0.035em;text-transform:uppercase;
+  color:var(--color-onyx-warm);line-height:.95;margin-bottom:10px;
+}
+.dish-desc{font-family:var(--fb);font-size:13px;font-weight:400;letter-spacing:-0.011em;color:var(--color-espresso);line-height:1.65;margin-bottom:14px}
+.dish-tags{display:flex;gap:6px;flex-wrap:wrap}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--color-midnight-roast);padding:92px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-band-title{font-family:var(--fd);font-weight:300;font-size:clamp(40px,6vw,80px);line-height:.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cta-dark{display:inline-flex;align-items:center;background:transparent;color:var(--color-parchment);border:1px solid var(--color-parchment);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s,color .4s;white-space:nowrap}
+.btn-cta-dark:hover{background:var(--color-parchment);color:var(--color-onyx-warm)}
+.btn-cta-text{display:inline-flex;align-items:center;background:transparent;border:none;padding:16px 0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.45;transition:opacity .4s;cursor:pointer}
+.btn-cta-text:hover{opacity:1}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--color-warm-stone)}
+.ft-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-espresso)}
+.ft-copy{font-family:var(--fb);font-size:12px;color:var(--color-walnut);letter-spacing:-0.012em}
+.ft-links{display:flex;gap:20px}
+.ft-link{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ft-link:hover{color:var(--color-onyx-warm)}
+
+@media(max-width:900px){
+  .nav{padding:16px 24px}.nav-links{gap:16px}
+  .page-banner{padding:100px 24px 60px}
+  .signature{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+  .sig-panel{max-width:100%;aspect-ratio:4/3}
+  .menu-sec{padding:60px 24px}
+  .dish-grid{grid-template-columns:1fr 1fr}
+  .dish:nth-child(3n){border-right:1px solid var(--color-warm-stone)}
+  .dish:nth-child(2n){border-right:none}
+  .dish:nth-last-child(-n+3){border-bottom:1px solid var(--color-warm-stone)}
+  .dish:last-child{border-bottom:none}
+  .cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start;gap:28px}
+  footer{padding:22px 24px}
+}
+@media(max-width:500px){
+  .dish-grid{grid-template-columns:1fr}
+  .dish{border-right:none !important}
+  .dish:not(:last-child){border-bottom:1px solid var(--color-warm-stone) !important}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+<link rel="stylesheet" href="./polish.css">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <a class="nav-logo" href="./index.html">Tadka · Hanu</a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./catering.html">Catering</a></li>
+    <li><a href="./menu.html" class="active">Menu</a></li>
+    <li><a href="./about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="./book.html">Book an Event</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu">
+  <a class="nav-overlay-link" href="./index.html">Home</a>
+  <a class="nav-overlay-link" href="./catering.html">Catering</a>
+  <a class="nav-overlay-link active" href="./menu.html">Menu</a>
+  <a class="nav-overlay-link" href="./about.html">About</a>
+  <a class="nav-overlay-link-cta" href="./book.html">Book an Event</a>
+</div>
+
+<div class="page-banner" id="pageBanner">
+  <p class="eyebrow">Handcrafted Cuisine</p>
+  <h1 class="page-title">The<br>Menu</h1>
+  <p class="page-sub">Every dish is made from scratch using traditional spices, slow techniques, and Honey's recipes passed down through generations.</p>
+</div>
+
+<hr class="rule">
+
+<!-- SIGNATURE -->
+<section class="signature">
+  <div class="sig-panel rv">
+    <div class="sig-ring sig-ring-1"></div>
+    <div class="sig-ring sig-ring-2"></div>
+    <div class="sig-panel-text">BC</div>
+    <div class="sig-label">Signature Dish · No. 01</div>
+  </div>
+  <div class="rv" style="transition-delay:.12s">
+    <p class="eyebrow">Chef's Signature</p>
+    <h2 class="sig-title">Butter<br>Chicken</h2>
+    <p class="sig-desc">The dish that started it all. Honey's butter chicken is a slow-cooked marvel — tender chicken in a velvety tomato cream sauce with roasted aromatics and a precise spice balance that borders on legendary. Guests have called it the best they've had across Europe and India.</p>
+    <div class="sig-tags">
+      <span class="tag tag-accent">Chef's Signature</span>
+      <span class="tag">Halal Available</span>
+      <span class="tag">Mild to Hot</span>
+    </div>
+    <div class="sig-meta">
+      <div class="sm-cell"><div class="sm-l">Protein</div><div class="sm-v">Chicken</div></div>
+      <div class="sm-cell"><div class="sm-l">Spice Level</div><div class="sm-v">Adj.</div></div>
+      <div class="sm-cell"><div class="sm-l">Dietary</div><div class="sm-v">GF Option</div></div>
+      <div class="sm-cell"><div class="sm-l">Serve With</div><div class="sm-v">Rice / Naan</div></div>
+    </div>
+    <a class="btn-light" href="./book.html">Order This Dish</a>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- MAINS -->
+<section class="menu-sec">
+  <div class="menu-sec-head rv">
+    <p class="eyebrow">Mains</p>
+    <h2 class="menu-sec-title">Signature<br>Dishes</h2>
+  </div>
+  <div class="dish-grid">
+    <div class="dish rv">
+      <div class="dish-name">Butter Chicken</div>
+      <p class="dish-desc">Slow-cooked chicken in velvety tomato cream. The one dish guests remember forever.</p>
+      <div class="dish-tags"><span class="tag tag-accent">Signature</span><span class="tag">GF</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.06s">
+      <div class="dish-name">Lamb Rogan Josh</div>
+      <p class="dish-desc">Slow-braised Kashmiri lamb with whole spices, yogurt, and a deep crimson gravy.</p>
+      <div class="dish-tags"><span class="tag">Halal</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.12s">
+      <div class="dish-name">Dal Makhani</div>
+      <p class="dish-desc">Black lentils simmered overnight with butter, cream, and a kiss of fenugreek.</p>
+      <div class="dish-tags"><span class="tag">Veg</span><span class="tag">GF</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.18s">
+      <div class="dish-name">Palak Paneer</div>
+      <p class="dish-desc">Fresh cottage cheese in a silky spinach purée with garlic, ginger, and green chillies.</p>
+      <div class="dish-tags"><span class="tag">Veg</span><span class="tag">GF</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.24s">
+      <div class="dish-name">Chicken Biryani</div>
+      <p class="dish-desc">Aromatic long-grain basmati layered with spiced chicken and caramelized onions. Dum-cooked.</p>
+      <div class="dish-tags"><span class="tag">Halal</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.30s">
+      <div class="dish-name">Chana Masala</div>
+      <p class="dish-desc">Whole chickpeas in a boldly spiced tomato-onion gravy. Street-food energy in refined form.</p>
+      <div class="dish-tags"><span class="tag">Vegan</span><span class="tag">GF</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- STARTERS -->
+<section class="menu-sec">
+  <div class="menu-sec-head rv">
+    <p class="eyebrow">Starters</p>
+    <h2 class="menu-sec-title">Small<br>Plates</h2>
+  </div>
+  <div class="dish-grid">
+    <div class="dish rv">
+      <div class="dish-name">Samosas</div>
+      <p class="dish-desc">Crisp pastry shells filled with spiced potato and peas. Served with tamarind chutney.</p>
+      <div class="dish-tags"><span class="tag">Vegan</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.06s">
+      <div class="dish-name">Chicken Tikka</div>
+      <p class="dish-desc">Marinated overnight in yogurt and spices, grilled in the tandoor. Smoky and tender.</p>
+      <div class="dish-tags"><span class="tag">GF</span><span class="tag">Halal</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.12s">
+      <div class="dish-name">Aloo Tikki</div>
+      <p class="dish-desc">Golden potato patties with mint chutney and a tamarind drizzle. Crowd-pleasing every time.</p>
+      <div class="dish-tags"><span class="tag">Veg</span><span class="tag">GF</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.18s">
+      <div class="dish-name">Seekh Kebab</div>
+      <p class="dish-desc">Minced lamb and herbs pressed on skewers, cooked over charcoal. Smoky richness in every bite.</p>
+      <div class="dish-tags"><span class="tag">Halal</span><span class="tag">GF</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.24s">
+      <div class="dish-name">Onion Bhaji</div>
+      <p class="dish-desc">Crispy fried onion fritters spiced with cumin, coriander, and fresh green chillies.</p>
+      <div class="dish-tags"><span class="tag">Vegan</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.30s">
+      <div class="dish-name">Chaat</div>
+      <p class="dish-desc">An Indian street-food classic: crispy wafers, potato, chickpeas, and sweet-tangy chutneys.</p>
+      <div class="dish-tags"><span class="tag">Veg</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- BREADS -->
+<section class="menu-sec">
+  <div class="menu-sec-head rv">
+    <p class="eyebrow">Breads &amp; Rice</p>
+    <h2 class="menu-sec-title">Sides<br>&amp; Breads</h2>
+  </div>
+  <div class="dish-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="dish rv" style="border-bottom:none">
+      <div class="dish-name">Garlic Naan</div>
+      <p class="dish-desc">Tandoor-baked leavened bread with roasted garlic butter and fresh coriander.</p>
+      <div class="dish-tags"><span class="tag">Veg</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.06s;border-bottom:none">
+      <div class="dish-name">Peshwari Naan</div>
+      <p class="dish-desc">Sweet naan filled with almonds, coconut, and sultanas. A richly indulgent side.</p>
+      <div class="dish-tags"><span class="tag">Veg</span></div>
+    </div>
+    <div class="dish rv" style="transition-delay:.12s;border-right:none;border-bottom:none">
+      <div class="dish-name">Jeera Rice</div>
+      <p class="dish-desc">Steamed basmati tempered with cumin seeds. Simple, aromatic, perfect alongside curries.</p>
+      <div class="dish-tags"><span class="tag">Vegan</span><span class="tag">GF</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<div class="cta-band">
+  <div class="cta-band-title rv">Hungry<br>Already?</div>
+  <div class="cta-btns rv" style="transition-delay:.1s">
+    <a class="btn-cta-dark" href="./book.html">Order or Book</a>
+    <a class="btn-cta-text" href="./catering.html">Catering Tiers →</a>
+  </div>
+</div>
+
+<hr class="rule">
+<footer>
+  <div class="ft-logo">Tadka By Hanu</div>
+  <div class="ft-copy">&copy; 2026 · Authentic Indian Catering</div>
+  <div class="ft-links">
+    <a class="ft-link" href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">Instagram</a>
+    <a class="ft-link" href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('siteNav');
+  var banner = document.getElementById('pageBanner');
+  function updateNav(){
+    if(window.scrollY >= banner.offsetHeight - 20){nav.classList.add('nav-light')}
+    else{nav.classList.remove('nav-light')}
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)} });
+  },{threshold:0.06});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script src="./mobile.js"></script>
+</body>
+</html>

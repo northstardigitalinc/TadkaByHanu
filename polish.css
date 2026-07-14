@@ -1,0 +1,290 @@
+/* ═══════════════════════════════════════════════
+   TADKA BY HANU — POLISH LAYER v1
+   Layered on top of per-page base styles.
+   Never changes color palette, layout, or copy.
+═══════════════════════════════════════════════ */
+
+/* ── TIMING TOKENS ─────────────────────────── */
+:root {
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.38, 0.64, 1);
+  --t-xs: 140ms;
+  --t-sm: 200ms;
+  --t-md: 260ms;
+  --t-lg: 480ms;
+}
+
+/* ── SCROLL REVEAL: longer, more graceful ───── */
+.rv {
+  transition-duration: 600ms !important;
+  transition-timing-function: var(--ease) !important;
+}
+/* Give non-inline-delayed items a slight base delay
+   so they don't pop in before the page settles */
+.rv:not([style*="transition-delay"]) {
+  transition-delay: 40ms;
+}
+
+/* ── NAV ────────────────────────────────────── */
+
+/* Logo: subtle opacity on hover */
+.nav-logo {
+  transition: opacity var(--t-sm) var(--ease), color 0.4s var(--ease) !important;
+}
+.nav-logo:hover { opacity: 0.65; }
+
+/* Nav links: animated underline from left */
+.nav-links a {
+  position: relative;
+  transition: opacity var(--t-sm) var(--ease), color 0.4s var(--ease) !important;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--t-md) var(--ease);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* Nav CTA: lift on hover */
+.nav-cta {
+  transition:
+    background var(--t-sm) var(--ease),
+    color var(--t-sm) var(--ease),
+    border-color var(--t-sm) var(--ease),
+    transform var(--t-xs) var(--ease),
+    box-shadow var(--t-sm) var(--ease) !important;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(41,38,34,0.12);
+}
+.nav-cta:active { transform: translateY(0); transition-duration: 80ms; }
+
+/* ── BUTTONS ─────────────────────────────────── */
+
+/* btn-dark: tighter timing, lift + shadow on hover */
+.btn-dark {
+  transition:
+    background var(--t-sm) var(--ease),
+    color var(--t-sm) var(--ease),
+    border-color var(--t-sm) var(--ease),
+    transform var(--t-xs) var(--ease),
+    box-shadow var(--t-sm) var(--ease) !important;
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+}
+.btn-dark:active { transform: translateY(0); }
+
+/* btn-light: same lift treatment */
+.btn-light {
+  transition:
+    background var(--t-sm) var(--ease),
+    color var(--t-sm) var(--ease),
+    border-color var(--t-sm) var(--ease),
+    transform var(--t-xs) var(--ease),
+    box-shadow var(--t-sm) var(--ease) !important;
+}
+.btn-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(41,38,34,0.15);
+}
+.btn-light:active { transform: translateY(0); }
+
+/* btn-text: the whole element nudges right, arrow follows */
+.btn-text {
+  transition:
+    color var(--t-sm) var(--ease),
+    opacity var(--t-sm) var(--ease),
+    transform var(--t-md) var(--ease) !important;
+}
+.btn-text:hover { transform: translateX(4px); }
+.btn-text:active { transform: translateX(2px); }
+
+/* ── EYEBROW REFINEMENT ──────────────────────── */
+/* A short saffron hairline before every section label */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 1px;
+  background: var(--color-saffron-glow);
+  opacity: 0.75;
+}
+
+/* ── SERVICE CARDS ───────────────────────────── */
+.sc {
+  position: relative;
+  transition: background var(--t-md) var(--ease) !important;
+}
+/* Inset saffron glow border on hover — appears from nothing */
+.sc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1.5px rgba(212,150,83,0);
+  transition: box-shadow var(--t-md) var(--ease);
+  pointer-events: none;
+}
+.sc:hover::after {
+  box-shadow: inset 0 0 0 1.5px rgba(212,150,83,0.45);
+}
+/* Numbered label warms to saffron on hover */
+.sc .sc-n {
+  transition: color var(--t-md) var(--ease);
+}
+.sc:hover .sc-n {
+  color: var(--color-saffron-glow);
+}
+/* Tags: subtle lift on hover since they sit inside a link */
+.sc .tag {
+  transition:
+    background var(--t-sm) var(--ease),
+    border-color var(--t-sm) var(--ease),
+    color var(--t-sm) var(--ease),
+    transform var(--t-sm) var(--ease-spring);
+}
+.sc:hover .tag:not(.tag-accent) {
+  border-color: var(--color-espresso);
+  color: var(--color-onyx-warm);
+}
+
+/* ── TESTIMONIAL CARDS ───────────────────────── */
+.tc {
+  transition: background var(--t-lg) var(--ease);
+}
+/* Saffron accent line that draws in from left on hover */
+.tc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-saffron-glow), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-md) var(--ease);
+}
+.tc:hover {
+  background: rgba(41,38,34,0.035);
+}
+.tc:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── STATS BAND ──────────────────────────────── */
+.stat {
+  transition: background var(--t-md) var(--ease);
+}
+.stat:hover {
+  background: rgba(41,38,34,0.04);
+}
+/* Number warms to saffron on stat hover */
+.stat .stat-n {
+  transition: color var(--t-md) var(--ease);
+}
+.stat:hover .stat-n {
+  color: var(--color-saffron-glow);
+}
+
+/* ── FOOTER LINKS ────────────────────────────── */
+.ft-link {
+  position: relative;
+  transition:
+    color var(--t-sm) var(--ease),
+    opacity var(--t-sm) var(--ease) !important;
+}
+.ft-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-md) var(--ease);
+}
+.ft-link:hover::after { transform: scaleX(1); }
+
+/* ── MARQUEE ─────────────────────────────────── */
+/* Fade out slightly when hovered (paused), returns focus to content */
+.mq-outer {
+  transition: opacity var(--t-md) var(--ease);
+}
+.mq-outer:hover {
+  opacity: 0.75;
+}
+
+/* ── RULE ────────────────────────────────────── */
+/* Make the divider lines slightly more refined */
+hr.rule {
+  border-color: rgba(182,171,156,0.5);
+}
+
+/* ── FOCUS STATES ────────────────────────────── */
+/* Keyboard navigation remains accessible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-saffron-glow);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── PAGE HEADER SECTIONS (about, catering etc) ── */
+/* Hero-style page openers: subtle vignette at the base */
+.page-hero {
+  position: relative;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(41,38,34,0.12));
+  pointer-events: none;
+}
+
+/* ── FORM INPUTS (book page) ────────────────── */
+input, textarea, select {
+  transition:
+    border-color var(--t-sm) var(--ease),
+    box-shadow var(--t-sm) var(--ease) !important;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(212,150,83,0.18);
+}
+
+/* ── REDUCED MOTION ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .rv { transition: none !important; }
+  .nav-links a::after,
+  .tc::before,
+  .ft-link::after { transition: none !important; }
+  .btn-dark:hover,
+  .btn-light:hover,
+  .nav-cta:hover { transform: none; }
+  .btn-text:hover { transform: none; }
+}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-page="catering">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catering — Tadka By Hanu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+
+:root{
+  --color-parchment:#d8cbb8;
+  --color-linen:#bfb4a3;
+  --color-warm-stone:#b6ab9c;
+  --color-walnut:#978e81;
+  --color-espresso:#615b53;
+  --color-onyx-warm:#2c2c2c;
+  --color-midnight-roast:#292622;
+  --color-saffron-glow:#d49653;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --fb:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{background:var(--color-parchment);color:var(--color-onyx-warm);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 52px;
+  transition:background .4s cubic-bezier(.25,.46,.45,.94),border-color .4s;
+}
+.nav-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;transition:color .4s}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.65;transition:opacity .4s,color .4s}
+.nav-links a:hover{opacity:1}
+.nav-links a.active{opacity:1}
+.nav-cta{font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;border:1px solid rgba(216,203,184,.55);border-radius:3px;padding:10px 20px;transition:background .4s,color .4s,border-color .4s}
+.nav-cta:hover{background:var(--color-parchment);color:var(--color-onyx-warm);border-color:var(--color-parchment)}
+.nav.nav-light{background:rgba(216,203,184,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--color-warm-stone)}
+.nav.nav-light .nav-logo,.nav.nav-light .nav-links a,.nav.nav-light .nav-cta{color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta{border-color:var(--color-onyx-warm)}
+.nav.nav-light .nav-cta:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.nav.nav-light .nav-links a.active{color:var(--color-saffron-glow);opacity:1}
+
+/* ── PAGE BANNER ── */
+.page-banner{
+  background:var(--color-midnight-roast);
+  padding:148px 60px 92px;
+}
+.page-banner .eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-parchment);opacity:.45;margin-bottom:20px}
+.page-title{font-family:var(--fd);font-weight:300;font-size:clamp(72px,11vw,148px);line-height:.86;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.page-sub{font-family:var(--fb);font-size:15px;font-weight:400;letter-spacing:-0.015px;color:var(--color-parchment);opacity:.5;line-height:1.65;max-width:520px;margin-top:22px}
+
+/* ── SHARED ── */
+hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
+.eyebrow{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);margin-bottom:16px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.rv.in{opacity:1;transform:none}
+.tag{display:inline-block;font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;border-radius:3px;padding:4px 10px;border:1px solid var(--color-warm-stone);color:var(--color-espresso)}
+.tag-accent{background:var(--color-saffron-glow);border-color:var(--color-saffron-glow);color:var(--color-onyx-warm)}
+
+.btn-light{display:inline-flex;align-items:center;background:transparent;color:var(--color-onyx-warm);border:1px solid var(--color-onyx-warm);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s cubic-bezier(.25,.46,.45,.94),color .4s;white-space:nowrap}
+.btn-light:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.btn-dark{display:inline-flex;align-items:center;background:transparent;color:var(--color-onyx-warm);border:1px solid var(--color-onyx-warm);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s,color .4s;white-space:nowrap}
+.btn-dark:hover{background:var(--color-onyx-warm);color:var(--color-parchment)}
+.btn-text{display:inline-flex;align-items:center;gap:6px;background:transparent;border:none;padding:0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;cursor:pointer;transition:color .4s;opacity:.8}
+.btn-text:hover{opacity:1;color:var(--color-onyx-warm)}
+
+/* ── TIERS ── */
+.tiers{padding:0}
+.tier{
+  padding:56px 60px;
+  display:grid;grid-template-columns:100px 1fr auto;
+  align-items:start;gap:48px;
+  border-bottom:1px solid var(--color-warm-stone);
+  transition:background .4s cubic-bezier(.25,.46,.45,.94);
+}
+.tier:hover{background:var(--color-linen)}
+.tier-num{
+  font-family:var(--fd);font-weight:300;font-size:80px;
+  color:var(--color-onyx-warm);opacity:.08;line-height:.88;
+  letter-spacing:-0.04em;flex-shrink:0;align-self:center;
+}
+.tier-body{}
+.tier-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.tier-name{font-family:var(--fd);font-weight:300;font-size:clamp(32px,4.5vw,56px);letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-onyx-warm);line-height:.9}
+.tier-desc{font-family:var(--fb);font-size:15px;font-weight:400;letter-spacing:-0.015px;color:var(--color-espresso);line-height:1.7;margin-bottom:22px;max-width:600px}
+.tier-includes{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.tier-includes li{
+  font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;
+  color:var(--color-espresso);display:flex;align-items:center;gap:12px;
+}
+.tier-includes li::before{
+  content:'';display:inline-block;width:4px;height:1px;
+  background:var(--color-warm-stone);flex-shrink:0;
+}
+.tier-cta{flex-shrink:0;align-self:center}
+
+/* ── INFO BAND ── */
+.info-band{padding:92px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.ib{padding:0 40px;border-right:1px solid var(--color-warm-stone)}
+.ib:first-child{padding-left:0}
+.ib:last-child{border-right:none}
+.ib-t{font-family:var(--fd);font-weight:300;font-size:26px;letter-spacing:-0.035em;text-transform:uppercase;color:var(--color-onyx-warm);margin-bottom:12px;line-height:1}
+.ib-d{font-family:var(--fb);font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--color-espresso);line-height:1.65}
+
+/* ── CTA BAND ── */
+.cta-band{
+  padding:92px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+  background:var(--color-midnight-roast);
+}
+.cta-band-title{font-family:var(--fd);font-weight:300;font-size:clamp(40px,6vw,80px);line-height:.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--color-parchment)}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cta-dark{display:inline-flex;align-items:center;background:transparent;color:var(--color-parchment);border:1px solid var(--color-parchment);border-radius:3px;padding:16px 28px;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .4s,color .4s;white-space:nowrap}
+.btn-cta-dark:hover{background:var(--color-parchment);color:var(--color-onyx-warm)}
+.btn-cta-text{display:inline-flex;align-items:center;background:transparent;border:none;padding:16px 0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-parchment);text-decoration:none;opacity:.55;transition:opacity .4s;cursor:pointer}
+.btn-cta-text:hover{opacity:1}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--color-warm-stone)}
+.ft-logo{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:-0.011em;text-transform:uppercase;color:var(--color-espresso)}
+.ft-copy{font-family:var(--fb);font-size:12px;color:var(--color-walnut);letter-spacing:-0.012em}
+.ft-links{display:flex;gap:20px}
+.ft-link{font-family:var(--fb);font-size:12px;font-weight:500;letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;transition:color .4s}
+.ft-link:hover{color:var(--color-onyx-warm)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav{padding:16px 24px}.nav-links{gap:16px}
+  .page-banner{padding:100px 24px 60px}
+  .tier{grid-template-columns:1fr;gap:16px;padding:44px 24px}.tier-num{font-size:48px}.tier-cta{margin-top:4px}
+  .info-band{grid-template-columns:1fr;padding:60px 24px;gap:36px}
+  .ib{padding:0;border-right:none;border-bottom:1px solid var(--color-warm-stone);padding-bottom:32px}
+  .ib:last-child{border-bottom:none;padding-bottom:0}
+  .cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start;gap:28px}
+  footer{padding:22px 24px}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+<link rel="stylesheet" href="./polish.css">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+
+<nav class="nav" id="siteNav">
+  <a class="nav-logo" href="./index.html">Tadka · Hanu</a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./catering.html" class="active">Catering</a></li>
+    <li><a href="./menu.html">Menu</a></li>
+    <li><a href="./about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="./book.html">Book an Event</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu">
+  <a class="nav-overlay-link" href="./index.html">Home</a>
+  <a class="nav-overlay-link active" href="./catering.html">Catering</a>
+  <a class="nav-overlay-link" href="./menu.html">Menu</a>
+  <a class="nav-overlay-link" href="./about.html">About</a>
+  <a class="nav-overlay-link-cta" href="./book.html">Book an Event</a>
+</div>
+
+<div class="page-banner" id="pageBanner">
+  <p class="eyebrow">What We Offer</p>
+  <h1 class="page-title">Catering<br>Styles</h1>
+  <p class="page-sub">Four distinct ways to experience authentic Indian cuisine — from a simple delivery to a full-scale live event for 400.</p>
+</div>
+
+<hr class="rule">
+
+<section class="tiers">
+  <div class="tier rv">
+    <div class="tier-num">01</div>
+    <div class="tier-body">
+      <div class="tier-top">
+        <div class="tier-name">Basic</div>
+        <span class="tag">Menu Orders</span>
+      </div>
+      <p class="tier-desc">Fresh authentic Indian meals prepared in our kitchen and delivered directly to your door. Quality is non-negotiable — whether it's one dish or a full spread, every order is made with care.</p>
+      <ul class="tier-includes">
+        <li>Order from our full rotating menu</li>
+        <li>Freshly cooked to order — never frozen</li>
+        <li>Delivery included</li>
+        <li>Packaging designed to preserve heat and texture</li>
+      </ul>
+      <span class="tag">Starting at market rates</span>
+    </div>
+    <div class="tier-cta"><a class="btn-light" href="./book.html">Order Now</a></div>
+  </div>
+
+  <div class="tier rv">
+    <div class="tier-num">02</div>
+    <div class="tier-body">
+      <div class="tier-top">
+        <div class="tier-name">Custom</div>
+        <span class="tag tag-accent">Fully Tailored</span>
+      </div>
+      <p class="tier-desc">Kitchen-prepared catering made exactly to your specifications. Ingredient substitutions, dietary requirements, portioning, and spice levels — all adjusted to match your vision.</p>
+      <ul class="tier-includes">
+        <li>Full menu customization</li>
+        <li>Vegetarian, vegan, halal, and gluten-aware options</li>
+        <li>Spice level control — mild to extra hot</li>
+        <li>Batch catering for groups and gatherings</li>
+        <li>Delivery and setup assistance</li>
+      </ul>
+      <span class="tag">Get a quote</span>
+    </div>
+    <div class="tier-cta"><a class="btn-light" href="./book.html">Get Quote</a></div>
+  </div>
+
+  <div class="tier rv">
+    <div class="tier-num">03</div>
+    <div class="tier-body">
+      <div class="tier-top">
+        <div class="tier-name">Private</div>
+        <span class="tag">Live Fire</span>
+      </div>
+      <p class="tier-desc">Chef Honey comes to your home or venue. A fully bespoke experience where a personalized menu is crafted, prepared live on-site, and served fresh. Intimate, immersive, unforgettable.</p>
+      <ul class="tier-includes">
+        <li>Private in-home or venue cooking experience</li>
+        <li>Custom tasting menu designed for your group</li>
+        <li>Live cooking — watch the magic happen</li>
+        <li>Serving and plating included</li>
+        <li>Ideal for dinner parties and celebrations (up to 30 guests)</li>
+      </ul>
+      <span class="tag">By enquiry</span>
+    </div>
+    <div class="tier-cta"><a class="btn-light" href="./book.html">Enquire</a></div>
+  </div>
+
+  <div class="tier rv" style="border-bottom:none">
+    <div class="tier-num">04</div>
+    <div class="tier-body">
+      <div class="tier-top">
+        <div class="tier-name">Live Event</div>
+        <span class="tag">20–400 Guests</span>
+      </div>
+      <p class="tier-desc">Full-scale event catering for weddings, corporate gatherings, backyard celebrations, receptions, and cultural events. Professional setup, live cooking stations, and flawless execution.</p>
+      <ul class="tier-includes">
+        <li>Weddings, receptions, and cultural celebrations</li>
+        <li>Corporate events and office lunches</li>
+        <li>Backyard BBQs and casual gatherings</li>
+        <li>Live cooking stations with Chef Honey</li>
+        <li>Full service: setup, cook, serve, and clean</li>
+        <li>Capacity: 20 to 400+ guests</li>
+      </ul>
+      <span class="tag">Custom pricing</span>
+    </div>
+    <div class="tier-cta"><a class="btn-light" href="./book.html">Book Now</a></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="info-band rv">
+  <div class="ib">
+    <div class="ib-t">Live on Site</div>
+    <p class="ib-d">Every dish cooked fresh at your event. No pre-made, no reheating — real fire, real flavour, every time.</p>
+  </div>
+  <div class="ib">
+    <div class="ib-t">Dietary Friendly</div>
+    <p class="ib-d">Vegetarian, vegan, halal, and allergen-aware options available across all catering tiers.</p>
+  </div>
+  <div class="ib">
+    <div class="ib-t">We Come to You</div>
+    <p class="ib-d">We travel to your venue, home, or event space. Contact us to discuss your location.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<div class="cta-band">
+  <div class="cta-band-title rv">Ready to<br>Eat Well?</div>
+  <div class="cta-btns rv" style="transition-delay:.1s">
+    <a class="btn-cta-dark" href="./book.html">Book Your Event</a>
+    <a class="btn-cta-text" href="./menu.html">View Menu →</a>
+  </div>
+</div>
+
+<hr class="rule">
+<footer>
+  <div class="ft-logo">Tadka By Hanu</div>
+  <div class="ft-copy">&copy; 2026 · Authentic Indian Catering</div>
+  <div class="ft-links">
+    <a class="ft-link" href="https://instagram.com/chefhoneystadka" target="_blank" rel="noopener">Instagram</a>
+    <a class="ft-link" href="https://tiktok.com/@tadkabyhoney" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('siteNav');
+  var banner = document.getElementById('pageBanner');
+  function updateNav(){
+    if(window.scrollY >= banner.offsetHeight - 20){nav.classList.add('nav-light')}
+    else{nav.classList.remove('nav-light')}
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)} });
+  },{threshold:0.06});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script src="./mobile.js"></script>
+</body>
+</html>

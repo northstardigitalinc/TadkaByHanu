@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════
+   TADKA BY HANU — MOBILE LAYER
+   Applied via @media (max-width: 768px).
+   The site auto-detects the device via CSS and
+   loads the appropriate layout — no redirect needed.
+═══════════════════════════════════════════════ */
+
+/* ── HAMBURGER BUTTON ───────────────────────── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: inherit;
+  flex-shrink: 0;
+  /* inherits color from nav state (parchment or onyx) */
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 220ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 160ms ease-out;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── MOBILE FULL-SCREEN OVERLAY NAV ─────────── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-midnight-roast);
+  z-index: 350;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 36px 52px;
+  gap: 0;
+  /* Hidden by default */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    visibility 0s linear 280ms;
+}
+.nav-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition:
+    opacity 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    visibility 0s linear 0ms;
+}
+.nav-overlay-link {
+  font-family: var(--fd);
+  font-weight: 300;
+  font-size: clamp(40px, 10vw, 60px);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-parchment);
+  text-decoration: none;
+  line-height: 1.1;
+  padding: 10px 0;
+  opacity: 0.7;
+  transition: opacity 180ms ease-out, color 180ms ease-out;
+  /* Staggered entrance */
+  transform: translateY(16px);
+  transition:
+    opacity 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 180ms ease-out,
+    transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-overlay.is-open .nav-overlay-link:nth-child(1) { transition-delay: 50ms; transform: none; opacity: 0.7; }
+.nav-overlay.is-open .nav-overlay-link:nth-child(2) { transition-delay: 90ms; transform: none; opacity: 0.7; }
+.nav-overlay.is-open .nav-overlay-link:nth-child(3) { transition-delay: 130ms; transform: none; opacity: 0.7; }
+.nav-overlay.is-open .nav-overlay-link:nth-child(4) { transition-delay: 170ms; transform: none; opacity: 0.7; }
+.nav-overlay.is-open .nav-overlay-link-cta { transition-delay: 220ms; transform: none; opacity: 1; }
+.nav-overlay-link:hover { opacity: 1; }
+.nav-overlay-link.active { color: var(--color-saffron-glow); opacity: 1; }
+.nav-overlay-link-cta {
+  margin-top: 36px;
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-parchment);
+  text-decoration: none;
+  border: 1px solid rgba(216,203,184,0.4);
+  border-radius: 3px;
+  padding: 14px 28px;
+  opacity: 1;
+  transform: translateY(16px);
+  transition:
+    opacity 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background 200ms ease-out,
+    color 200ms ease-out,
+    transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-overlay-link-cta:hover {
+  background: rgba(216,203,184,0.12);
+}
+
+/* A small decorative line at the bottom of the overlay */
+.nav-overlay::after {
+  content: 'Tadka By Hanu';
+  position: absolute;
+  bottom: 32px;
+  left: 36px;
+  font-family: var(--fb);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-parchment);
+  opacity: 0.2;
+}
+
+/* ── MOBILE BREAKPOINT ───────────────────────── */
+@media (max-width: 768px) {
+
+  /* Show burger, hide desktop nav elements */
+  .nav-burger { display: flex; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  .nav { padding: 16px 20px; }
+
+  /* ── HERO (index.html only) ──
+     JS collapses the driver to 100vh on mobile.
+     These overrides handle the layout within it. */
+  .hero-driver { height: 100vh !important; }
+  .hero-center { width: 92%; }
+  .hero-tagline {
+    font-size: clamp(48px, 13vw, 80px) !important;
+    margin-bottom: 16px;
+  }
+  .hero-sub { margin-bottom: 28px; }
+  .hero-ctas-block {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-ctas-block .btn-dark {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+    min-height: 52px;
+  }
+  .scroll-hint { display: none; }
+
+  /* ── STATS ── */
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat {
+    padding: 28px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-warm-stone);
+  }
+  .stat:nth-child(odd) {
+    border-right: 1px solid var(--color-warm-stone);
+  }
+  .stat:nth-child(3),
+  .stat:nth-child(4) {
+    border-bottom: none;
+  }
+
+  /* ── SERVICE CARDS ── */
+  .home-svcs { padding: 52px 20px; }
+  .home-svcs .sec-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .grid2x2 { grid-template-columns: 1fr; }
+  .sc { padding: 32px 24px; }
+
+  /* ── TESTIMONIALS ── */
+  .home-ts { padding: 52px 20px; }
+  .home-ts .sec-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .t3 { grid-template-columns: 1fr; }
+  .tc {
+    border-right: none;
+    border-bottom: 1px solid var(--color-warm-stone);
+    padding: 36px 20px 28px;
+  }
+  .tc:last-child { border-bottom: none; }
+
+  /* ── MARQUEE ── */
+  .mw { font-size: clamp(32px, 7vw, 48px); padding: 0 20px; }
+  .mq-outer { padding: 36px 0; }
+
+  /* ── SECTION HEADERS ── */
+  .sec-title { font-size: clamp(44px, 10vw, 72px) !important; }
+
+  /* ── BUTTONS ── */
+  .btn-dark, .btn-light {
+    min-height: 52px;
+    padding: 14px 24px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 20px;
+  }
+  .ft-copy { order: 3; }
+  .ft-links { gap: 20px; }
+
+  /* ── INNER PAGE BANNERS ── */
+  .page-banner {
+    padding: 100px 20px 52px;
+    min-height: auto;
+  }
+  .page-banner .sec-title {
+    font-size: clamp(48px, 12vw, 80px) !important;
+  }
+
+  /* ── ABOUT PAGE ── */
+  .story-grid,
+  .vals-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .story-panel,
+  .val-item {
+    padding: 32px 20px !important;
+  }
+
+  /* ── CATERING PAGE ── */
+  .catering-tiers { padding: 52px 20px !important; }
+  .tier-grid { grid-template-columns: 1fr !important; }
+  .tier { padding: 32px 20px !important; }
+
+  /* ── MENU PAGE ── */
+  .menu-sections { padding: 52px 20px !important; }
+  .menu-grid { grid-template-columns: 1fr !important; }
+
+  /* ── BOOK PAGE ── */
+  .book-wrap {
+    grid-template-columns: 1fr !important;
+    padding: 52px 20px !important;
+  }
+  .form-left { padding-right: 0 !important; }
+
+  /* ── CONTACT LIST (book page) ── */
+  .contact-list { margin-bottom: 40px; }
+
+}
+
+/* ── REDUCED MOTION ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .nav-overlay,
+  .nav-overlay-link,
+  .nav-overlay-link-cta,
+  .nav-burger span {
+    transition: none !important;
+  }
+}
