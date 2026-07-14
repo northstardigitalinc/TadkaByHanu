@@ -147,10 +147,7 @@
   .nav-cta { display: none !important; }
   .nav { padding: 16px 20px; }
 
-  /* ── HERO (index.html only) ──
-     JS collapses the driver to 100vh on mobile.
-     These overrides handle the layout within it. */
-  .hero-driver { height: 100vh !important; }
+  /* ── HERO (index.html only) ── */
   .hero-center { width: 92%; }
   .hero-tagline {
     font-size: clamp(48px, 13vw, 80px) !important;
@@ -168,7 +165,12 @@
     justify-content: center;
     min-height: 52px;
   }
-  .scroll-hint { display: none; }
+  .scroll-hint {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    gap: 6px;
+  }
+  .scroll-hint-line { height: 28px; }
 
   /* ── STATS ── */
   .stats {

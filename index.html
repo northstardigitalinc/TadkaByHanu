@@ -331,7 +331,7 @@ footer{
 <section class="hero-inner" id="hero">
   <div class="hero-video-wrap" aria-hidden="true">
     <video class="hero-video" id="heroVid"
-      muted playsinline autoplay loop preload="auto" webkit-playsinline
+      muted playsinline preload="auto"
       src="./hero.mp4">
     </video>
     <div class="hero-video-overlay"></div>
@@ -463,24 +463,15 @@ footer{
 <script>
 (function(){
 'use strict';
-var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var isMobile = window.matchMedia('(max-width: 768px)').matches;
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ── VIDEO ─── */
 var vid = document.getElementById('heroVid');
 var videoReady = false;
 var smoothP = 0;
 
-function attemptPlay() {
-  vid.play().catch(function(){});
-}
-
 function onVidReady() {
-  if (reduced || isMobile) {
-    vid.loop = true;
-    attemptPlay();
-    return;
-  }
+  if (reduced) return;
   videoReady = true;
 }
 
@@ -491,27 +482,11 @@ if (vid.readyState >= 1) {
   vid.addEventListener('loadedmetadata', onVidReady, {once:true});
 }
 
-// Also try on canplay / canplaythrough for stubborn browsers
-vid.addEventListener('canplay', function() { if (isMobile) attemptPlay(); }, {once:true});
-
-// iOS unlock: play on first touch anywhere on the page
-if (isMobile) {
-  function unlockVideo() {
-    attemptPlay();
-    document.removeEventListener('touchstart', unlockVideo);
-    document.removeEventListener('touchend', unlockVideo);
-  }
-  document.addEventListener('touchstart', unlockVideo, {passive:true});
-  document.addEventListener('touchend', unlockVideo, {passive:true});
-}
-
 /* ── NAV SCROLL AWARENESS ─── */
 var nav = document.getElementById('siteNav');
 var driver = document.getElementById('heroDriver');
 function updateNav() {
-  var threshold = isMobile
-    ? Math.round(window.innerHeight * 0.85)
-    : driver.offsetHeight - window.innerHeight - 20;
+  var threshold = driver.offsetHeight - window.innerHeight - 20;
   if (window.scrollY >= threshold) {
     nav.classList.add('nav-light');
   } else {
@@ -536,10 +511,10 @@ if (!reduced) {
     hintEl.style.opacity = fo;
     if (eyeEl) eyeEl.style.opacity = (fo * 0.4).toFixed(2);
 
-    if (!isMobile && videoReady && vid.duration && !vid.seeking) {
-      smoothP += (p - smoothP) * 0.15;
+    if (videoReady && vid.duration && !vid.seeking) {
+      smoothP += (p - smoothP) * 0.12;
       var t = smoothP * vid.duration;
-      if (Math.abs(vid.currentTime - t) > 0.008) vid.currentTime = t;
+      if (Math.abs(vid.currentTime - t) > 0.012) vid.currentTime = t;
     }
 
     requestAnimationFrame(heroLoop);
