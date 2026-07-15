@@ -59,6 +59,15 @@ hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
 .btn-text{display:inline-flex;align-items:center;gap:6px;background:transparent;border:none;padding:0;font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:-0.01em;text-transform:uppercase;color:var(--color-espresso);text-decoration:none;cursor:pointer;transition:color .4s;opacity:.8}
 .btn-text:hover{opacity:1;color:var(--color-onyx-warm)}
 
+/* ── FOOD PHOTO GALLERY ── */
+.food-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.fg-item{margin:0;aspect-ratio:1;overflow:hidden}
+.fg-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);display:block}
+.fg-item:hover img{transform:scale(1.05)}
+.sig-panel-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+@media(max-width:900px){.food-gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.food-gallery{grid-template-columns:1fr 1fr}}
+
 /* ── SIGNATURE DISH ── */
 .signature{padding:92px 60px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .sig-panel{
@@ -211,9 +220,9 @@ footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-b
 <!-- SIGNATURE -->
 <section class="signature">
   <div class="sig-panel rv">
+    <img class="sig-panel-img" src="./images/jpg/IMG_6513.jpg" alt="Chef Honey's precision plating — grilled main course" loading="lazy">
     <div class="sig-ring sig-ring-1"></div>
     <div class="sig-ring sig-ring-2"></div>
-    <div class="sig-panel-text">BC</div>
     <div class="sig-label">Signature Dish · No. 01</div>
   </div>
   <div class="rv" style="transition-delay:.12s">
@@ -276,6 +285,13 @@ footer{padding:28px 60px;display:flex;align-items:center;justify-content:space-b
     </div>
   </div>
 </section>
+
+<div class="food-gallery">
+  <figure class="fg-item rv"><img src="./images/jpg/IMG_6838.jpg" alt="Tuna tartare with avocado and microgreens" loading="lazy"></figure>
+  <figure class="fg-item rv" style="transition-delay:.05s"><img src="./images/jpg/IMG_6790.jpg" alt="Poached salmon with dill cream and crispy skin" loading="lazy"></figure>
+  <figure class="fg-item rv" style="transition-delay:.10s"><img src="./images/jpg/IMG_6650.jpg" alt="Glazed duck belly with chive mash" loading="lazy"></figure>
+  <figure class="fg-item rv" style="transition-delay:.15s"><img src="./images/jpg/IMG_6783.jpg" alt="Caramel pecan sticky buns — dessert" loading="lazy"></figure>
+</div>
 
 <hr class="rule">
 

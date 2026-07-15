@@ -198,6 +198,16 @@ hr.rule{border:none;border-top:1px solid var(--color-warm-stone);margin:0}
   letter-spacing:-0.012em;text-transform:uppercase;color:var(--color-walnut);
 }
 
+/* ── PHOTO GALLERY ────────────────────── */
+.home-gallery{padding:80px 60px}
+.home-gallery-head{margin-bottom:48px}
+.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.pg3-item{margin:0;aspect-ratio:4/3;overflow:hidden;display:block}
+.pg3-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);display:block}
+.pg3-item:hover img{transform:scale(1.04)}
+@media(max-width:900px){.home-gallery{padding:52px 20px}.pg3{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.pg3{grid-template-columns:1fr}}
+
 /* ── SERVICES GRID ────────────────────── */
 .home-svcs{padding:92px 60px}
 .sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:32px;flex-wrap:wrap}
@@ -397,6 +407,23 @@ footer{
       <p class="sc-d">Weddings, corporate, backyard BBQs, receptions. Full-scale catering for any occasion.</p>
       <span class="tag">Full Service</span>
     </a>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<hr class="rule">
+<section class="home-gallery">
+  <div class="home-gallery-head rv">
+    <p class="eyebrow">Our Work</p>
+    <h2 class="sec-title">From the<br>Kitchen</h2>
+  </div>
+  <div class="pg3">
+    <figure class="pg3-item rv"><img src="./images/jpg/IMG_6838.jpg" alt="Tuna tartare with avocado — event catering plating" loading="lazy"></figure>
+    <figure class="pg3-item rv" style="transition-delay:.06s"><img src="./images/jpg/IMG_6124.jpg" alt="Charred artichoke on herb cream — fine dining plating" loading="lazy"></figure>
+    <figure class="pg3-item rv" style="transition-delay:.12s"><img src="./images/jpg/IMG_6513.jpg" alt="Grilled steak with mashed potato and tomato tart" loading="lazy"></figure>
+    <figure class="pg3-item rv" style="transition-delay:.18s"><img src="./images/jpg/IMG_6790.jpg" alt="Poached salmon with dill cream and crispy skin" loading="lazy"></figure>
+    <figure class="pg3-item rv" style="transition-delay:.24s"><img src="./images/jpg/IMG_6650.jpg" alt="Sliced glazed duck with chive mashed potato" loading="lazy"></figure>
+    <figure class="pg3-item rv" style="transition-delay:.30s"><img src="./images/jpg/IMG_6906.jpg" alt="Grilled chicken plate with jasmine rice and spring rolls" loading="lazy"></figure>
   </div>
 </section>
 
