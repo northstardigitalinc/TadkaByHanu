@@ -278,6 +278,33 @@
 
 }
 
+/* ── PHOTO GALLERIES & IMAGE STRIPS ─────────── */
+@media (max-width: 768px) {
+  /* index.html — From the Kitchen gallery */
+  .home-gallery { padding: 44px 20px; }
+  .pg3 { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  /* menu.html — food photo gallery (4-col → 2-col) */
+  .food-gallery { grid-template-columns: 1fr 1fr; }
+
+  /* catering.html — event photo strip */
+  .cat-photos { grid-template-columns: 1fr; }
+  .cat-photo-item { aspect-ratio: 16/9; }
+
+  /* about.html — process strip */
+  .process-strip { grid-template-columns: 1fr; }
+  .process-item { aspect-ratio: 16/9; }
+
+  /* story panel photo fills correctly on mobile */
+  .story-panel { aspect-ratio: 4/3; }
+}
+
+@media (max-width: 480px) {
+  /* single column for very narrow screens */
+  .pg3 { grid-template-columns: 1fr; }
+  .food-gallery { grid-template-columns: 1fr 1fr; }
+}
+
 /* ── REDUCED MOTION ──────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .nav-overlay,
