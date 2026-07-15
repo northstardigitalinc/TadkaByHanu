@@ -464,6 +464,7 @@ footer{
 (function(){
 'use strict';
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var previewMode = /[?&]autoplay=1/.test(window.location.search);
 
 /* ── VIDEO ─── */
 var vid = document.getElementById('heroVid');
@@ -473,8 +474,13 @@ var smoothP = 0;
 function onVidReady() {
   if (reduced) return;
   videoReady = true;
-  // Seek to first frame so video is visible immediately (not a black box)
-  if (vid.currentTime === 0) vid.currentTime = 0.001;
+  if (previewMode) {
+    vid.loop = true;
+    vid.play();
+  } else {
+    // Seek to first frame so video is visible immediately (not a black box)
+    if (vid.currentTime === 0) vid.currentTime = 0.001;
+  }
 }
 
 // Guard against loadedmetadata firing before this script ran
@@ -517,7 +523,7 @@ if (!reduced) {
     hintEl.style.opacity = fo;
     if (eyeEl) eyeEl.style.opacity = (fo * 0.4).toFixed(2);
 
-    if (videoReady && vid.duration && !vid.seeking) {
+    if (!previewMode && videoReady && vid.duration && !vid.seeking) {
       smoothP += (p - smoothP) * 0.12;
       var t = smoothP * vid.duration;
       if (Math.abs(vid.currentTime - t) > 0.012) vid.currentTime = t;
